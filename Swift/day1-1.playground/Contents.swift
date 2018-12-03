@@ -14,10 +14,9 @@ let day1 = adventDir + "/day1-1in.txt"
 
 print(day1)
 
-let day1url = URL(fileURLWithPath: "Users/markwo/Developer/Advent/day1-1in.txt")
-///Users/markwo/Developer/Advent/day1-1in.txt
+let day1url = URL(fileURLWithPath: "~/Developer/advent-of-swift/inputs/day1-1in.txt")
 
-try FileManager.default.contentsOfDirectory(atPath: "/Users/markwo/Developer/Advent")
+//try FileManager.default.contentsOfDirectory(atPath: "/Users/markwo/Developer/Advent")
 
 var frequenciesString = ""
 
@@ -37,22 +36,38 @@ for frequenciesChar in frequenciesList {
     }
 }
 
-let currentFreqs = frequenciesInts.filter({$0 == calibration})
-print(currentFreqs)
+// Check on sample input
+// frequenciesInts = [+3, +3, +4, -2, -4]
 
 var calibration:Int = 0
 var calibrationHist:[Int] = []
-var calibratedResult:Int = 0
+var calibratedResult:Int?
 
-for frequencyVal in frequenciesInts {
-    calibration += frequencyVal
-    calibrationHist.append(calibration)
-//    let currentFreqs = calibrationHist.filter({$0 == calibration})
-//    if currentFreqs.count == 2 {
-//        calibratedResult = calibration
-//        break
-//    }
+print(calibratedResult)
+print(frequenciesInts.count)
+
+
+while calibratedResult == nil {
+    // Comments to reassure that things are happening
+    print("Looping frequencies")
+    print("Latest frequency: " + String(calibration))
+    print("Historic count: " + String(calibrationHist.count))
+    for frequencyVal in frequenciesInts {
+        calibration += frequencyVal
+        calibrationHist.append(calibration)
+        let currentFreqs = calibrationHist.filter({$0 == calibration})
+        if currentFreqs.count > 1 {
+            print("Resulting frequency = " + String(calibration))
+            calibratedResult = calibration
+            break
+        }
+    }
 }
 
-calibration
-calibratedResult
+print(calibration)
+
+if calibratedResult != nil {
+    print(calibratedResult!)
+} else {
+    print("Result not found")
+}
