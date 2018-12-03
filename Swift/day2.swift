@@ -45,6 +45,43 @@ for id in idsList {
     }
 }
 
-print("Final sum = " + String(twoCount * threeCount))
+print("Final product = " + String(twoCount * threeCount))
 
 
+var firstId:String = ""
+var secondId:String = ""
+
+for idIndex in 0..<idsList.count {
+    let firstBox = idsList[idIndex]
+    for secondIdIndex in (idIndex + 1)..<idsList.count {
+        var divergingChars:Int = 0
+        let secondBox = idsList[secondIdIndex]
+        for charIndex in 0..<firstBox.count {
+            if String(firstBox)[String.Index.init(encodedOffset: charIndex)] != String(secondBox)[String.Index.init(encodedOffset: charIndex)] {
+                divergingChars += 1
+            }
+            if divergingChars > 1 {
+                continue
+            }
+        }
+        if divergingChars < 2 {
+            firstId = String(firstBox)
+            secondId = String(secondBox)
+        }
+    }
+}
+
+
+print("Boxes are :" + firstId + " and " + secondId)
+
+var commonChars: String = ""
+
+for charIndex in 0..<firstId.count {
+    if String(firstId)[String.Index.init(encodedOffset: charIndex)] != String(secondId)[String.Index.init(encodedOffset: charIndex)] {
+        print("Divergent char is: " + String(String(firstId)[String.Index.init(encodedOffset: charIndex)]))
+    } else {
+        commonChars += String(String(firstId)[String.Index.init(encodedOffset: charIndex)])
+    }
+}
+
+print("Common chars are: " + commonChars)
