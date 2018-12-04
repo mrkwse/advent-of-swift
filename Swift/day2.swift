@@ -7,9 +7,9 @@
 
 import Foundation
 
-let day2url = URL(fileURLWithPath: "/Users/woosem02/Developer/advent-of-swift/inputs/day2in.txt")
+let day2url = URL(fileURLWithPath: "~/Developer/advent-of-swift/inputs/day2in.txt")
 
-//try FileManager.default.contentsOfDirectory(atPath: "/Users/markwo/Developer/Advent")
+//try FileManager.default.contentsOfDirectory(atPath: "~/Developer/Advent")
 
 var idsString = ""
 

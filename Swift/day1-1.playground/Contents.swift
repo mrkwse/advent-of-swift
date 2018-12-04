@@ -16,7 +16,7 @@ print(day1)
 
 let day1url = URL(fileURLWithPath: "~/Developer/advent-of-swift/inputs/day1-1in.txt")
 
-//try FileManager.default.contentsOfDirectory(atPath: "/Users/markwo/Developer/Advent")
+//try FileManager.default.contentsOfDirectory(atPath: "~/Developer/Advent")
 
 var frequenciesString = ""
 
